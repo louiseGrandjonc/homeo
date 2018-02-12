@@ -129,6 +129,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "homeo", "static"),
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 
 # Heroku settings
@@ -141,6 +143,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/staticfiles/'
 
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'frozen-anchorage-60223.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'frozen-anchorage-60223.herokuapp.com', 'homeochoice.herokuapp.com']
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
