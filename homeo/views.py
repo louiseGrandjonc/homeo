@@ -1,7 +1,7 @@
 from django.db.models import Q, OuterRef, Subquery, Count
 from django.views.generic.list import ListView
 
-from homeo.models import ModeReactionnel, Cible, Medicament, MedicamentCibles
+from homeo.models import ModeReactionnel, Cible, Medicament
 
 
 class MedicamentList(ListView):

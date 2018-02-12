@@ -27,15 +27,7 @@ class Cible(models.Model):
 class Medicament(models.Model):
     nom = models.CharField(max_length=255)
     modes = models.ManyToManyField(ModeReactionnel, related_name='medicaments', blank=True)
-    cibles = models.ManyToManyField(Cible, related_name='medicaments', through='MedicamentCibles')
+    cibles = models.ManyToManyField(Cible, related_name='medicaments')
 
     def __str__(self):
         return self.nom
-
-
-class MedicamentCibles(models.Model):
-    medicament = models.ForeignKey(Medicament, on_delete=models.CASCADE)
-    cible = models.ForeignKey(Cible, on_delete=models.CASCADE)
-
-    class Meta:
-        db_table = 'homeo_medicament_cibles'
