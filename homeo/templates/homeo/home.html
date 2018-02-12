@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml"  xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Homéopathie - mon site</title>
+    </head>
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <body>
+        <header class="header-site">
+            <div class="nav-home header-nav__item">
+                <a class="header-nav__link" href="{% url 'index' %}" data-tooltip="Retourner à l'index">
+                    <span class="header-nav__title">HomeoChoice</span>
+                </a>
+            </div>
+        </header>
+
+        <div class="content">
+            <aside class="medicament__choice">
+                <form id="searchform" action="{% url 'index' %}" method="get" accept-charset="utf-8">
+                    <div class="form__mode">
+                        <div class="form__title">Modes</div>
+                        <select name="mode" id="mode">
+                            <option value="all" {% if not selected_mode %}selected{% endif %}>Tous</option>
+                            {% for mode in mode_list %}
+                                <option value="{{ mode.pk }}" {% if mode == selected_mode %}selected {% endif %} class="mode {{ mode.color }}">
+                                    {{ mode.nom }} - {{ mode.get_color_display }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form__cible">
+                        <div class="form__title">Cibles</div>
+                        <select name="cibles" id="id_cibles" multiple="multiple">
+                            {% for cible in cible_list %}
+                                <option value="{{ cible.pk }}" {% if cible in selected_cibles %}selected {% endif %}>{{ cible.nom }}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <button class="searchbutton" type="submit">
+                        <i class="fa fa-search"></i> Rechercher
+                    </button>
+
+                </form>
+
+                <a href="{% url 'index' %}" class="reset">
+                    Reinitialiser les filtres
+                </a>
+            </aside>
+
+            <div class="medicament__list">
+                {% for medicament in object_list %}
+                    <div class="medicament__item">
+                        {% if medicament.score %}
+                            <div class="medicament__score">
+                                <input class="score__input" type="number" name="number" value="{{ medicament.score }}" min="0">
+                            </div>
+                        {% endif %}
+
+                        <div class="medicament__description">
+                            <div class="medicament__name">
+                                {{ medicament.nom }}
+                            </div>
+
+                            <div class="medicament__modes">
+                                {% for mode in medicament.modes.all %}
+                                    <i class="medicament__mode fa fa-circle" style="color: {{ mode.color }};"></i>
+                                {% endfor %}
+                            </div>
+
+                            <ul class="medicament__cibles">
+                                {% for cible in medicament.cibles.all %}
+                                    <li class="medicament__cible {% if cible in selected_cibles %} selected{% endif %}"">{{ cible.nom }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </body>
+</html>

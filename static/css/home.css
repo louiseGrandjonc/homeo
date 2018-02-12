@@ -1,0 +1,63 @@
+body {
+    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.header-site {
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 2px solid green;
+}
+
+.header-nav__link {
+    text-decoration: none;
+    color: green;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+.medicament__choice {
+    width: 20%;
+    position: fixed;
+}
+
+.medicament__list {
+    width: 80%;
+    margin-left: 25%;
+}
+
+.medicament__item {
+    width: 80%;
+    padding: 10px;
+    background: #f5f6f9;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.medicament__cibles {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.medicament__cible {
+    background: #989898;
+    color: #fff;
+    padding: 0.2em 0.8em;
+    border-radius: 10px;
+    line-height: 1.1em;
+    margin-right: 5px;
+}
+
+.medicament__cible.selected {
+    background: green;
+}
+
+.medicament__name {
+    display: inline-block;
+}
+
+.medicament__modes {
+    display: inline-block;
+}

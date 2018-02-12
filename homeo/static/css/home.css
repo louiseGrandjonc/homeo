@@ -1,0 +1,168 @@
+body {
+    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.header-site {
+    line-height: 50px;
+    text-align: center;
+    border-bottom: 2px solid green;
+}
+
+.header-nav__link {
+    text-decoration: none;
+    color: #fff;
+    padding: 0.2em 0.8em;
+    border-radius: 10px;
+    line-height: 1.1em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background: green;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+.medicament__choice {
+    width: 20%;
+    position: fixed;
+    background: #f5f6f9;
+    margin: 0px 20px 20px 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.medicament__list {
+    width: 80%;
+    margin-left: 25%;
+}
+
+.medicament__item {
+    width: 80%;
+    padding: 10px;
+    background: #f5f6f9;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.medicament__cibles {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0px;
+}
+
+.medicament__cible {
+    background: #989898;
+    color: #fff;
+    padding: 0.2em 0.8em;
+    border-radius: 10px;
+    line-height: 1.1em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.medicament__cible.selected {
+    background: green;
+}
+
+.medicament__name {
+    display: inline-block;
+}
+
+.medicament__modes {
+    display: inline-block;
+}
+
+.medicament__mode {
+    margin-right: 5px;
+}
+
+
+.medicament__description {
+    display: inline-block;
+    width: 90%;
+}
+
+.medicament__score {
+    display: inline-block;
+    width: 9%;
+}
+
+.score__input {
+    width: 80%;
+}
+
+
+option:after {
+    content: " ";
+    height: 5px;
+    width: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+option.red:after {
+    background: red;
+}
+option.green:after {
+    background: green;
+}
+option.blue:after {
+    background: blue;
+}
+
+option.yellow:after {
+    background: yellow;
+}
+
+.form__mode {
+    margin-bottom: 10px;
+}
+
+.form__cible {
+    margin-bottom: 10px;
+}
+
+.form__title {
+    margin-bottom: 5px;
+}
+
+select {
+    width: 80%;
+    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+form {
+    font-weight: 400;
+}
+
+.searchbutton {
+    padding: 0.2em 0.8em;
+    border-radius: 10px;
+    line-height: 1.1em;
+    margin-right: 5px;
+    margin-bottom: 20px;
+    width: 80%;
+    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.reset {
+    padding: 0.2em 0.8em;
+    border-radius: 10px;
+    line-height: 1.1em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 80%;
+    text-decoration: none;
+    background: white;
+    color: black;
+    border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+    border-style: solid;
+    border-width: 1px;
+}
