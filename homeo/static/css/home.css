@@ -166,3 +166,7 @@ form {
     border-style: solid;
     border-width: 1px;
 }
+
+#id_cibles {
+    height: 180px;
+}
