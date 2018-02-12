@@ -149,4 +149,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'rozen-anchorage-60223.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', 'frozen-anchorage-60223.herokuapp.com']
