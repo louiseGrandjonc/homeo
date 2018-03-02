@@ -97,10 +97,11 @@ body {
 
 option:after {
     content: " ";
-    height: 5px;
-    width: 5px;
-    border-radius: 5px;
+    height: 14px;
+    width: 14px;
+    border-radius: 14px;
     display: inline-block;
+    margin-left: 10px;
 }
 
 option.red:after {

@@ -1,5 +1,6 @@
 from django.db.models import Q, OuterRef, Subquery, Count
 from django.views.generic.list import ListView
+from django.contrib.admin.views.decorators import staff_member_required
 
 from homeo.models import ModeReactionnel, Cible, Medicament
 
@@ -11,25 +12,25 @@ class MedicamentList(ListView):
     def get_context_data(self, **kwargs):
         context = super(MedicamentList, self).get_context_data(**kwargs)
 
-        context['mode_list'] = ModeReactionnel.objects.all()
-        context['cible_list'] = Cible.objects.all()
+        context['mode_list'] = ModeReactionnel.objects.all().order_by('position')
+        context['cible_list'] = Cible.objects.all().order_by('position')
 
-        context['selected_mode'] = self.mode
+        context['selected_mode'] = self.modes
         context['selected_cibles'] = self.cibles
 
         return context
 
     def get_queryset(self):
         qs = super(MedicamentList, self).get_queryset()
-        mode_id = self.request.GET.get('mode')
+        mode_ids = self.request.GET.getlist('mode')
         cible_ids = self.request.GET.getlist('cibles')
 
         self.cibles = None
-        self.mode = None
+        self.modes = None
 
-        if mode_id and mode_id != 'all':
+        if mode_ids and 'all' not in mode_ids:
             try:
-                self.mode = ModeReactionnel.objects.get(pk=int(mode_id))
+                self.modes = ModeReactionnel.objects.filter(pk__in=[int(m) for m in mode_ids])
             except:
                 pass
 
@@ -40,8 +41,8 @@ class MedicamentList(ListView):
                 pass
 
 
-        if self.mode:
-            qs = qs.filter(Q(modes__in=[self.mode]) | Q(modes__isnull=True))
+        if self.modes:
+            qs = qs.filter(Q(modes__in=self.modes) | Q(modes__isnull=True))
 
         if self.cibles:
             qs = qs.filter(cibles__in=self.cibles)
@@ -51,4 +52,4 @@ class MedicamentList(ListView):
         return qs.prefetch_related('modes', 'cibles')
 
 
-medicament_list = MedicamentList.as_view()
+medicament_list = staff_member_required(MedicamentList.as_view())
