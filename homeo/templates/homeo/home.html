@@ -24,13 +24,14 @@
                 <form id="searchform" action="{% url 'index' %}" method="get" accept-charset="utf-8">
                     <div class="form__mode">
                         <div class="form__title">Modes</div>
-                        <select name="mode" id="mode" multiple="multiple">
-                            <option value="all" {% if not selected_mode %}selected{% endif %}>Tous</option>
+                        <select name="mode" id="id_mode" multiple="multiple">
                             {% for mode in mode_list %}
                                 <option value="{{ mode.pk }}" {% if mode in selected_mode %}selected {% endif %} class="mode {{ mode.color }}">
                                     {{ mode.nom }}
                                 </option>
                             {% endfor %}
+                            <option value="all" {% if not selected_mode %}selected{% endif %}>Tous</option>
+
                         </select>
                     </div>
 

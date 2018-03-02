@@ -171,3 +171,7 @@ form {
 #id_cibles {
     height: 180px;
 }
+
+#id_mode {
+    height: 100px;
+}
