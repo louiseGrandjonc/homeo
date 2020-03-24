@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml"  xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Secu-copier/coller</title>
+  </head>
+  <body>
+    <script>
+      function  CopyContent() {
+        var value = document.getElementById("nbsecu").value;
+        value = value.replace(/\s/g, '');
+        document.getElementById("nbsecu").value = value;
+
+        document.getElementById("nbsecu").select();
+        document.execCommand('copy');
+
+        document.getElementById("message").innerHTML = "<p>Value copied: " + value + "</p>";
+      }
+    </script>
+
+    <div class="content">
+      <form id="searchform" action="/" method="get" accept-charset="utf-8">
+        <span><label>Numero de securite sociale</label></span></br>
+        <textarea id="nbsecu" rows="4" cols="50" oninput="CopyContent();" placeholder="Copie ici le numero de securite sociale"></textarea>
+      </form>
+
+    </div>
+
+    <div class="messages" id="message">
+    </div>
+  </body>
+</html>
